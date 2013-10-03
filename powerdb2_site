@@ -1,0 +1,22 @@
+<VirtualHost *:80>
+
+        ## set these to the domain name your server will be accessed
+        ## under if you have multiple virtual hosts
+        # ServerName new.openbms.org
+        # ServerAlias new.openbms.org
+
+        # statically serve media files
+        Alias "/media" "/srv/powerdb2/media/"
+
+        ProxyPass "/backend" http://localhost:8079
+
+        # serve the django project using WSGI
+        WSGIScriptAlias / /srv/powerdb2/django.wsgi
+
+        # make sure to enable gzip responses
+        SetOutputFilter DEFLATE
+        SetEnvIfNoCase Request_URI \
+        \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+        # Make sure proxies don't deliver the wrong content
+
+</VirtualHost>
