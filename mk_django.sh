@@ -9,6 +9,7 @@ echo "Starting django script"
 echo "----"
 
 cd /srv/powerdb2
+python manage.py collectstatic --noinput
 python manage.py syncdb --noinput
 python manage.py createsuperuser --noinput --username root --email smapstack@steelcode.com
 #python django-admin.py changepassword --noinput --username root foobar

@@ -6,7 +6,7 @@
         # ServerAlias new.openbms.org
 
         # statically serve media files
-        Alias "/media" "/srv/powerdb2/media/"
+        Alias "/media" "/srv/powerdb2/static/"
 
         ProxyPass "/backend" http://localhost:8079
 
